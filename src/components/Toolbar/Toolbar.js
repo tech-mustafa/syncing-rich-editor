@@ -20,6 +20,8 @@ import { BlockButton } from "./BlockButton";
 import { ColorPallete } from "./ColorPallete";
 import { MarkButton } from "./MarkButton";
 import { InsertImageButton } from "./ImageInsertButton";
+import SocialShare from "../Modal/SocialShare";
+import { useState } from "react";
 
 const BLOCK_BUTTONS = [
   { format: "heading-one", icon: <LooksOneIcon /> },
@@ -48,8 +50,8 @@ export const ToolBar = ({
   docName,
   handleDocNameChange,
   clearEditor,
-  shareEditor,
 }) => {
+  const [openShare, setOpenShare] = useState(false);
   return (
     <Toolbar className="toolbar">
       <div className="tools">
@@ -81,10 +83,21 @@ export const ToolBar = ({
         <Mbutton className="clear-button" onClick={clearEditor}>
           Clear
         </Mbutton>
-        <Mbutton className="clear-button ml-5" onClick={shareEditor}>
+        <Mbutton
+          className="clear-button ml-5"
+          onClick={() => {
+            setOpenShare(true);
+          }}
+        >
           Share
         </Mbutton>
       </div>
+      <SocialShare
+        open={openShare}
+        close={() => {
+          setOpenShare(false);
+        }}
+      />
     </Toolbar>
   );
 };

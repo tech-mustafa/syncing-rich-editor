@@ -145,3 +145,14 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
+.link-button {
+  background: none;
+  border: none;
+  color: blue; /* Adjust color to match link color */
+  cursor: pointer;
+  text-decoration: underline; /* Add underline to mimic link */
+  padding: 0; /* Remove padding to make it look more like a link */
+  font: inherit; /* Inherit font styles */
+  outline: none; /* Remove focus outline */
+}

@@ -5,13 +5,21 @@ import { v4 } from "uuid";
 import { collection, query, getDocs } from "firebase/firestore";
 import { db } from "../../utils/FirebaseConfig";
 import CircularProgress from "@mui/material/CircularProgress";
+import NameModal from "../Modal/NameModal";
+import { Edit } from "@mui/icons-material";
 
 function Home() {
   const [data, setData] = useState([]);
+  const [open, setOpen] = useState("");
+
   const [loading, setLoading] = useState(true);
   const router = useNavigate();
 
   useEffect(() => {
+    const name = localStorage.getItem("user-name");
+    if (!name) {
+      setOpen(true);
+    }
     const getData = async () => {
       const q = query(collection(db, "documents-for-editor"));
       const querySnapshot = await getDocs(q);
@@ -30,7 +38,13 @@ function Home() {
     <Box sx={{ padding: "20px" }}>
       <Box sx={{ marginBottom: "20px" }}>
         <Typography variant="h2" sx={{ fontWeight: "500" }}>
-          Welcome!
+          Welcome {localStorage.getItem("user-name")}!{" "}
+          <Edit
+            sx={{ cursor: "pointer", color: "gray" }}
+            onClick={() => {
+              setOpen(true);
+            }}
+          />
         </Typography>
       </Box>
       <Box className={"doc-box-wrapper"}>
@@ -54,6 +68,7 @@ function Home() {
           </Box>
         ))}
       </Box>
+      <NameModal open={open} setOpen={setOpen} />
     </Box>
   );
 }

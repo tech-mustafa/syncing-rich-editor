@@ -39,14 +39,15 @@ const RichTextEditor = ({
   const renderElement = useCallback((props) => <Element {...props} />, []);
   const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
 
+  const userName = localStorage.getItem("user-name");
+
   const editor = useMemo(() => {
-    const name = new NameGenerator();
     const e = withImages(
       withEmbeds(
         withReact(
           withCursors(withYjs(createEditor(), sharedType), provider.awareness, {
             data: {
-              name: name.generateName(),
+              name: userName || new NameGenerator().generateName(),
               color: generateVisibleRandomColor(),
             },
           })
