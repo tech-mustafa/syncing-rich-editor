@@ -24,16 +24,6 @@ Check out the live demo [here](https://editor-by-mustafa.netlify.app).
 - Y.js: A framework for building collaborative editing applications.
 - Liveblocks: A platform for adding real-time collaboration to web applications.
 
-## Getting Started
-
-To run the app locally, follow these steps:
-
-1. Clone this repository: `git clone https://github.com/your/repository.git`
-2. Navigate to the project directory: `cd project-directory`
-3. Install dependencies: `npm install`
-4. Start the development server: `npm start`
-5. Open your browser and navigate to `http://localhost:3000`
-
 
 ## License
 
